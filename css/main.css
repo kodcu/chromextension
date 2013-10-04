@@ -1,0 +1,305 @@
+﻿*
+{
+    background: transparent;
+    border: 0;
+    font-size: 100%;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section
+{
+    display: block;
+}
+
+body
+{
+    line-height: 1;
+    width: 400px;
+    height: 355px;
+    color: rgb(51, 51, 51);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 135%;
+    overflow: auto;
+}
+
+abbr[title], dfn[title]
+{
+    border-bottom: 1px dotted;
+    cursor: help;
+}
+
+blockquote, q
+{
+    quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after
+{
+    content: none;
+}
+
+del
+{
+    text-decoration: line-through;
+}
+
+hr
+{
+    background: transparent;
+    border: 0;
+    clear: both;
+    color: transparent;
+    height: 1px;
+    margin: 0;
+    padding: 0;
+}
+
+mark
+{
+    background-color: #ffffb3;
+    font-style: italic;
+}
+
+input, select
+{
+    vertical-align: middle;
+}
+
+ins
+{
+    background-color: red;
+    color: white;
+    text-decoration: none;
+}
+
+ol, ul
+{
+    list-style: none;
+}
+
+table
+{
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.clear
+{
+    clear: both;
+    display: block;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+}
+
+.clearfix:after
+{
+    clear: both;
+    content: ' ';
+    display: block;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+    width: 0;
+}
+
+* html .clearfix, :first-child + html .clearfix
+{
+    zoom: 1;
+}
+html
+{
+    background-image: url(/images/load.gif);
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+/* ------------------------------------  */
+.postMeta
+{
+    border-top: 1px solid rgb(226, 226, 226);
+    padding: 10px 0px 3px 0px;
+    margin-top: 10px;
+    clear: left;
+    overflow: hidden;
+    float: left;
+    width: 100%;
+}
+
+.postMeta a
+{
+    color: Black;
+    text-decoration: none;
+}
+
+.postMeta a:hover
+{
+    text-decoration: underline;
+}
+
+.metaRight
+{
+    width: 100%;
+}
+
+.textPreview
+{
+    margin: 0px 0px 0px 0px;
+    text-align: justify;
+    padding: 0;
+}
+
+.postThumb
+{
+    float: left;
+    margin: 4px 10px 0px 2px;
+}
+
+h1
+{
+    font-size: 16px;
+    letter-spacing: -1px;
+    font-weight: bolder;
+    padding: 10px 0 12px;
+    line-height: 100%;
+    font-family: Arial,Helvetica,sans-serif;
+    font-style: normal;
+}
+
+h1 a:hover
+{
+    color: rgb(31, 162, 225);
+    text-decoration: none;
+}
+
+h1 a
+{
+    color: black;
+    text-decoration: none;
+}
+
+.category
+{
+    background: url(/images/star.png) 0 50% no-repeat;
+    padding: 0;
+    text-transform: uppercase;
+    font-size: 11px;
+    line-height: 100%;
+    color: rgb(204, 204, 204);
+    font-weight: bold;
+}
+
+.category a
+{
+    color: black;
+}
+
+.postBoxMid
+{
+    padding: 0;
+    background: url(/images/bk_box_mid.png) 0 0 repeat-y;
+    border-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    border-width: 1px;
+    border-style: solid;
+    margin-top: 1px;
+    margin-left: 1px;
+    margin-right: 1px;
+    margin-bottom: 3px;
+}
+
+.postBoxMidInner
+{
+    padding: 5px 5px;
+    position: relative;
+}
+
+.first
+{
+    background: url(/images/bk_box_mid_inner.jpg) 0 0 no-repeat;
+}
+
+.date
+{
+    float: right;
+    text-transform: uppercase;
+    font-size: 11px;
+    line-height: 100%;
+    font-weight: bold;
+}
+
+.articles
+{
+    z-index: 1;
+    height: 100%;
+    margin-top: 53px;
+}
+.headItem
+{
+    height: 45px;
+    display: block;
+    position: fixed;
+    top: 0;
+    clear: both;
+    z-index: 1111;
+    width: 397px;
+    background-color: rgba(247, 247, 247, 0.84);
+    border-color: rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    border-width: 1px;
+    border-style: solid;
+    display: none;
+    box-shadow: -1px 6px 6px -5px rgb(204, 204, 204);
+}
+.home
+{
+    background-image: url(/images/home32.png);
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+    position: absolute;
+}
+.authors
+{
+    background-image: url(/images/users32.png);
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+    position: absolute;
+}
+.write
+{
+    background-image: url(/images/pencilplus32.png);
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+    position: absolute;
+}
+.navi
+{
+    display: inline-table;
+    float: right;
+}
+.authors:hover, .write:hover, .home:hover
+{
+    box-shadow: -1px 6px 6px -5px rgb(204, 204, 204);
+}
+.navi li
+{
+    list-style-type: none;
+    display: inline-table;
+    height: 32px;
+    width: 32px;
+    margin: 5px 15px 0px 15px;
+    padding: 0;
+}
+.logo
+{
+    width: 190px;
+    padding-top: 5px;
+}

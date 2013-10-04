@@ -1,0 +1,31 @@
+{
+  "name": "Kodcu.com Haberler",
+
+  "version": "1.8",
+
+  "description": "Kodcu.com Haberlerine Daha Yakinsiniz",
+
+  "icons": 		{ "128": "images/kodcu.png" },
+
+  "permissions": [
+  "http://*.google.com/", 
+  "https://*.google.com/", 
+  "tabs","notifications",
+  "http://www.kodcu.com/feed",
+  "http://*/*", 
+  "https://*/*"],
+
+  "background": { "page": "background.html"},
+
+  "web_accessible_resources": [
+     "images/information.png"
+  ],
+
+  "browser_action": {
+    "default_title": "Kodcu.com |  Teknolojilerin Takipcisi",
+    "default_icon": "images/kodcu.png",
+    "default_popup": "listofarticles.html"
+  },
+
+  "manifest_version": 2
+}
