@@ -65,7 +65,7 @@
                             $('.headItem').css({ 'display': 'block' });
                             $('.articles').html($listAll);
                             document.body.style.height = "100%";
-
+                            console.log("Kodcu.com");
                         }
                     }
                 }

@@ -256,17 +256,28 @@ h1 a
     display: none;
     box-shadow: -1px 6px 6px -5px rgb(204, 204, 204);
 }
-.home
+
+.pano
 {
-    background-image: url(/images/home32.png);
+    background-image: url(/images/pano.png);
     background-repeat: no-repeat;
     width: 32px;
     height: 32px;
     position: absolute;
 }
+
+.github
+{
+    background-image: url(/images/github.png);
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+    position: absolute;
+}
+
 .authors
 {
-    background-image: url(/images/users32.png);
+    background-image: url(/images/person.png);
     background-repeat: no-repeat;
     width: 32px;
     height: 32px;
@@ -274,7 +285,7 @@ h1 a
 }
 .write
 {
-    background-image: url(/images/pencilplus32.png);
+    background-image: url(/images/writer.png);
     background-repeat: no-repeat;
     width: 32px;
     height: 32px;
@@ -285,7 +296,7 @@ h1 a
     display: inline-table;
     float: right;
 }
-.authors:hover, .write:hover, .home:hover
+.authors:hover, .write:hover, .github:hover,.pano:hover
 {
     box-shadow: -1px 6px 6px -5px rgb(204, 204, 204);
 }
@@ -295,7 +306,7 @@ h1 a
     display: inline-table;
     height: 32px;
     width: 32px;
-    margin: 5px 15px 0px 15px;
+    margin: 5px 8px 0px 8px;
     padding: 0;
 }
 .logo
