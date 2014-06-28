@@ -38,10 +38,13 @@
                             var rss = $.parseXML(response);
                             $(rss).find("item").each(function (index, item) {
                                 var $listcate = "";
+                                var count = 0;
                                 var $desc = $(item).find("description").text();
                                 var img = $(item).find("description").text().substr(0, $desc.indexOf('>') + 1);
                                 $(item).find("category").each(function (indexs, items) {
                                     $listcate += '<a class="catehref" style="margin-right:1px;margin-left:1px;" href=http://www.kodcu.com/icerik/' + $(items).text() + ' title="' + $(items).text() + ' kategorisindeki t&#252;m yaz&#305;lar&#305; g&#246;ster" rel="category tag">' + $(items).text() + '</a> // ';
+                                    if (++count == 5)
+                                        return false;
                                 });
                                 $listAll += '<div class="postBoxMid">' +
                             '<div class="postBoxMidInner first clearfix">' +

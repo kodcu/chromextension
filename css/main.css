@@ -283,9 +283,9 @@ h1 a
     height: 32px;
     position: absolute;
 }
-.write
+.info
 {
-    background-image: url(/images/writer.png);
+    background-image: url(/images/information.png);
     background-repeat: no-repeat;
     width: 32px;
     height: 32px;
@@ -296,7 +296,7 @@ h1 a
     display: inline-table;
     float: right;
 }
-.authors:hover, .write:hover, .github:hover,.pano:hover
+.authors:hover, .info:hover, .github:hover,.pano:hover
 {
     box-shadow: -1px 6px 6px -5px rgb(204, 204, 204);
 }
