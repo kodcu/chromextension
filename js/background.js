@@ -2,42 +2,41 @@
     $(document).ready(function () {
         try {
             var firstItemNames, secondItemNames;
-            var random = Math.floor((Math.random() * 180) + 1) + 00000;
+            //pick a random number as a timer   
+            var random = Math.floor((Math.random() * 2600000) + 1000000);
+            
             if (!localStorage.isInitialized) {
                 localStorage.isActivated = true;
                 localStorage.isCountChange = false;
             }
 
-            if (window.webkitNotifications) {
+            function init() {
                 if (JSON.parse(localStorage.isActivated)) { getFirst(); }
-
+                
                 setInterval(function () {
-                    if (JSON.parse(localStorage.isActivated)) {
-                        if (localStorage.isCountChange != undefined &&
-                        JSON.parse(localStorage.isCountChange) == true) {
+                    if (JSON.parse(localStorage.isActivated)) {                        
+                        if (JSON.parse(localStorage.isCountChange)) {
                             getFirst();
                             localStorage.isCountChange = false;
                         }
-                        else
-                            getSecond();
+                        getSecond();                       
                     }
                 }, random);
             }
+            init();
 
             function getFirst() {
                 firstItemNames = [];
                 var req = new XMLHttpRequest();
                 req.open("GET", "http://www.kodcu.com/feed/", true);
-                req.onload = listof;
-                req.send(null);
+                req.onreadystatechange = listof;
+                req.send();
                 function listof() {
-                    if (req.readyState == 4) {
-                        if (req.status == 200) {
-                            var rss = $.parseXML(req.responseText);
-                            $(rss).find("item").each(function (index, item) {
-                                firstItemNames[index] = $(item).find("title").text();
-                            });
-                        }
+                    if (req.readyState == 4 && req.status == 200) {                     
+                        var rss = $.parseXML(req.responseText);
+                        $(rss).find("item").each(function (index, item) {
+                            firstItemNames[index] = $(item).find("title").text();
+                        });                        
                     }
                 }
             }
@@ -46,25 +45,22 @@
                 secondItemNames = [];
                 var req = new XMLHttpRequest();
                 req.open("GET", "http://www.kodcu.com/feed/", true);
-                req.onload = listof;
-                req.send(null);
+                req.onreadystatechange = listof;
+                req.send();
                 function listof() {
-                    if (req.readyState == 4) {
-                        if (req.status == 200) {
+                    if (req.readyState == 4 && req.status == 200) {
                             var rss = $.parseXML(req.responseText);
                             $(rss).find("item").each(function (index, item) {
                                 secondItemNames[index] = $(item).find("title").text();
                             });
-                            controlItems();
-                        }
+                            controlItems();                        
                     }
                 }
             }
 
             function controlItems() {
                 var count = 0;
-                if (localStorage.isCountChange != undefined &&
-                JSON.parse(localStorage.isCountChange) == false &&
+                if (JSON.parse(localStorage.isCountChange) == false &&
                 firstItemNames.length == secondItemNames.length) {
 
                     for (var i = 0; i < secondItemNames.length; i++) {
