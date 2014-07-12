@@ -4,7 +4,7 @@
             var firstItemNames, secondItemNames;
             //pick a random number as a timer   
             var random = Math.floor((Math.random() * 2600000) + 1000000);
-            
+           
             if (!localStorage.isInitialized) {
                 localStorage.isActivated = true;
                 localStorage.isCountChange = false;
@@ -62,7 +62,7 @@
                 var count = 0;
                 if (JSON.parse(localStorage.isCountChange) == false &&
                 firstItemNames.length == secondItemNames.length) {
-
+                    
                     for (var i = 0; i < secondItemNames.length; i++) {
                         for (var y = 0; y < firstItemNames.length; y++) {
                             if (secondItemNames[i] == firstItemNames[y]) {
