@@ -1,5 +1,4 @@
-﻿*
-{
+﻿* {
     background: transparent;
     border: 0;
     font-size: 100%;
@@ -9,13 +8,21 @@
     vertical-align: baseline;
 }
 
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section
-{
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
     display: block;
 }
 
-body
-{
+body {
     line-height: 1;
     width: 400px;
     height: 355px;
@@ -26,29 +33,28 @@ body
     overflow: auto;
 }
 
-abbr[title], dfn[title]
-{
+abbr[title],
+dfn[title] {
     border-bottom: 1px dotted;
     cursor: help;
 }
 
-blockquote, q
-{
+blockquote, q {
     quotes: none;
 }
 
-blockquote:before, blockquote:after, q:before, q:after
-{
-    content: none;
-}
+    blockquote:before,
+    blockquote:after,
+    q:before,
+    q:after {
+        content: none;
+    }
 
-del
-{
+del {
     text-decoration: line-through;
 }
 
-hr
-{
+hr {
     background: transparent;
     border: 0;
     clear: both;
@@ -58,37 +64,33 @@ hr
     padding: 0;
 }
 
-mark
-{
+mark {
     background-color: #ffffb3;
     font-style: italic;
 }
 
-input, select
-{
+input,
+select {
     vertical-align: middle;
 }
 
-ins
-{
+ins {
     background-color: red;
     color: white;
     text-decoration: none;
 }
 
-ol, ul
-{
+ol,
+ul {
     list-style: none;
 }
 
-table
-{
+table {
     border-collapse: collapse;
     border-spacing: 0;
 }
 
-.clear
-{
+.clear {
     clear: both;
     display: block;
     height: 0;
@@ -97,8 +99,7 @@ table
     width: 0;
 }
 
-.clearfix:after
-{
+.clearfix:after {
     clear: both;
     content: ' ';
     display: block;
@@ -109,19 +110,18 @@ table
     width: 0;
 }
 
-* html .clearfix, :first-child + html .clearfix
-{
+* html .clearfix,
+:first-child + html .clearfix {
     zoom: 1;
 }
-html
-{
+
+html {
     background-image: url(/images/load.gif);
     background-position: center center;
     background-repeat: no-repeat;
 }
 /* ------------------------------------  */
-.postMeta
-{
+.postMeta {
     border-top: 1px solid rgb(226, 226, 226);
     padding: 10px 0px 0px 0px;
     margin-top: 10px;
@@ -131,37 +131,31 @@ html
     width: 100%;
 }
 
-.postMeta a
-{
-    color: Black;
-    text-decoration: none;
-}
+    .postMeta a {
+        color: Black;
+        text-decoration: none;
+    }
 
-.postMeta a:hover
-{
-    text-decoration: underline;
-}
+        .postMeta a:hover {
+            text-decoration: underline;
+        }
 
-.metaRight
-{
+.metaRight {
     width: 100%;
 }
 
-.textPreview
-{
+.textPreview {
     margin: 0px 0px 0px 0px;
     text-align: justify;
     padding: 0;
 }
 
-.postThumb
-{
+.postThumb {
     float: left;
     margin: 4px 10px 0px 2px;
 }
 
-h1
-{
+h1 {
     font-size: 16px;
     letter-spacing: -1px;
     font-weight: bolder;
@@ -171,22 +165,17 @@ h1
     font-style: normal;
 }
 
-h1 a:hover
-{
+h1 a:hover {
     color: rgb(31, 162, 225);
     text-decoration: none;
 }
 
-h1 a
-{
+h1 a {
     color: black;
     text-decoration: none;
 }
 
-.category
-{
-    background: url(/images/star.png) 0 50% no-repeat;
-    padding: 0;
+.category {
     text-transform: uppercase;
     font-size: 11px;
     line-height: 100%;
@@ -194,16 +183,25 @@ h1 a
     font-weight: bold;
 }
 
-.category a
-{
+.category a {
     color: black;
 }
 
-.postBoxMid
-{
+.starBookmark {
+    padding: 0;
+    width: 12px;
+    height: 12px;
+    float: left;
+}
+
+.starBookmark:hover {
+    cursor:pointer;    
+}
+
+.postBoxMid {
     padding: 0;
     background: url(/images/bk_box_mid.png) 0 0 repeat-y;
-    border-color: rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 0, 0, 0.19);
     border-radius: 5px;
     border-width: 1px;
     border-style: solid;
@@ -213,19 +211,16 @@ h1 a
     margin-bottom: 3px;
 }
 
-.postBoxMidInner
-{
+.postBoxMidInner {
     padding: 5px 5px;
     position: relative;
 }
 
-.first
-{
+.first {
     background: url(/images/bk_box_mid_inner.jpg) 0 0 no-repeat;
 }
 
-.date
-{
+.date {
     float: right;
     text-transform: uppercase;
     font-size: 11px;
@@ -233,14 +228,13 @@ h1 a
     font-weight: bold;
 }
 
-.articles
-{
+.articles {
     z-index: 1;
     height: 100%;
     margin-top: 53px;
 }
-.headItem
-{
+
+.headItem {
     height: 45px;
     display: block;
     position: fixed;
@@ -258,8 +252,7 @@ h1 a
     box-shadow: -1px 6px 6px -5px rgb(204, 204, 204);
 }
 
-.pano
-{
+.pano {
     background-image: url(/images/pano.png);
     background-repeat: no-repeat;
     width: 32px;
@@ -267,8 +260,7 @@ h1 a
     position: absolute;
 }
 
-.github
-{
+.github {
     background-image: url(/images/github.png);
     background-repeat: no-repeat;
     width: 32px;
@@ -276,33 +268,35 @@ h1 a
     position: absolute;
 }
 
-.authors
-{
+.authors {
     background-image: url(/images/person.png);
     background-repeat: no-repeat;
     width: 32px;
     height: 32px;
     position: absolute;
 }
-.info
-{
+
+.info {
     background-image: url(/images/information.png);
     background-repeat: no-repeat;
     width: 32px;
     height: 32px;
     position: absolute;
 }
-.navi
-{
+
+.navi {
     display: inline-table;
     float: right;
 }
-.authors:hover, .info:hover, .github:hover,.pano:hover
-{
+
+.authors:hover,
+.info:hover,
+.github:hover,
+.pano:hover {
     box-shadow: -1px 6px 6px -5px rgb(204, 204, 204);
 }
-.navi li
-{
+
+.navi li {
     list-style-type: none;
     display: inline-table;
     height: 32px;
@@ -310,8 +304,8 @@ h1 a
     margin: 5px 8px 0px 8px;
     padding: 0;
 }
-.logo
-{
+
+.logo {
     width: 190px;
     padding-top: 5px;
 }

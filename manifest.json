@@ -1,16 +1,21 @@
 {
   "name": "Kodcu.com Haberler",
   "manifest_version": 2,
-  "version": "2.0.3",
+  "version": "2.1.0",
 
   "description": "Kodcu.com Haberlerine Daha Yakinsiniz",
 
   "icons": 		{ "128": "images/kodcu.png" },
 
+
+  "background": {
+    "scripts": ["background.js"]
+  },
+
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+
   "permissions": [
-  "http://*.google.com/", 
-  "https://*.google.com/", 
-  "tabs","notifications",
+  "tabs","notifications","bookmarks",
   "http://www.kodcu.com/feed",
   "http://*/*", 
   "https://*/*"],
