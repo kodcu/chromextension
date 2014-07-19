@@ -1,7 +1,6 @@
 ﻿(function ($) {
     $(document).ready(function () {
         try {
-            var storedBooks = true;
 
             $('a.more-link,a.catehref,h1 a,ul li a').live('click', function () {
                 chrome.tabs.create({
@@ -71,6 +70,7 @@
             chrome.browserAction.onClicked.addListener(updateIcon);
             updateIcon();
 
+            //get the list of articles consisting of HTML elements
             var GetArticles = function () {
 
                 var req = new XMLHttpRequest();
@@ -81,53 +81,41 @@
                 req.send();
 
                 function listof() {
-                    $listAll = "";
+                    var postHTML = "";
                     if (req.readyState == 4 && req.status == 200) {
 
                         var response = req.responseText;
                         var rss = $.parseXML(response);
+                        var HashTable = new hashtable();
+
                         $(rss).find("item").each(function (index, item) {
-                            var $listcate = "";
-                            var count = 0;
-                            var $desc = $(item).find("description").text();
-                            var href = $(item).find("link").text();
 
-                            var date = $.trim($(item).find("pubDate").text().substr(4, 12));
-                            var listDate = date.split(" ");
-                            var month = getMonthAbbreviation(listDate[1]);
-                            var img = $(item).find("description").text().substr(0, $desc.indexOf('>') + 1);
-
-                            $(item).find("category").each(function (indexs, items) {
-                                $listcate += '<a class="catehref" style="margin-right:1px;margin-left:1px;" href=http://www.kodcu.com/icerik/' + $(items).text() + ' title="' + $(items).text() + ' kategorisindeki t&#252;m yaz&#305;lar&#305; g&#246;ster" rel="category tag">' + $(items).text() + '</a> // ';
-                                if (++count == 5)
-                                    return false;
-                            });                            
-
-                            $listAll += '<div class="postBoxMid">' +
+                            var post = new article($(item), HashTable);
+                            postHTML += '<div class="postBoxMid">' +
                             '<div class="postBoxMidInner first clearfix">' +
-                            '<div class="date"><span>' + listDate[0] + " " + month + " " + listDate[2] + '</span></div>' +
+                            '<div class="date"><span>' + post.getDate() + '</span></div>' +
                             '<div class="category"> ' +
-                            '<div class="starBookmark" source="' + href + '" booktitle="' + $(item).find("title").text() + '" access="" title="" index="' + index + '"></div>' +
-                            '<div style="margin-left: 15px;width:288px">' + $listcate.substr(0, $listcate.length - 3) + '</div></div>' +
-                            '<h1> <a href="' + href + '">' + $(item).find("title").text() + '</a></h1>' +
-                            '<div class="postThumb"><img height="100" style="max-width:200px;" src="' + $(img).attr('src') + '"></div>' +
-                            '<div class="textPreview"><p>' + $desc.substr($desc.indexOf('>') + 1) + '</p>' +
+                            '<div class="starBookmark" source="' + post.href + '" booktitle="' + post.title + '" access="" title="" index="' + index + '"></div>' +
+                            '<div style="margin-left: 15px;width:288px">' + post.getCategories() + '</div></div>' +
+                            '<h1> <a href="' + post.href + '">' + post.title + '</a></h1>' +
+                            '<div class="postThumb"><img height="100" style="max-width:200px;" src="' + $(post.image).attr('src') + '"></div>' +
+                            '<div class="textPreview"><p>' + post.getDescription() + '</p>' +
                             '</div>' +
                             '<div class="postMeta">' +
-                            '<a style="float: left; margin-top: 5px;margin-right: 6px;margin-top: 2px;" href="' + $(item).find("link").text() + '" class="more-link">Devam&#305;n&#305; Oku &#187;</a>' +
+                            '<a style="float: left; margin-top: 5px;margin-right: 6px;margin-top: 2px;" href="' + post.href + '" class="more-link">Devam&#305;n&#305; Oku &#187;</a>' +
                                 '<div class="metaRight">' +
-                                    '<img style="float: left; position: relative;;margin-top: -8px;" src="http://www.kodcu.com/wp/wp-content/themes/alltuts/images/ico_author.png" alt="Yazar">' +
+                                    '<img style="float: left; position: relative;;margin-top: -8px;height:28px;" src="/images/male80.png" alt="Yazar">' +
                                     '<div style="margin-top:2px; margin-right: 0px;">' +
-                                        '<a style="text-decoration:underline;">' + $(item).find("creator").text() + '</a> taraf&#305;ndan yaz&#305;ld&#305;.</div>' +
+                                        '<a style="text-decoration:underline;">' + post.creator + '</a> taraf&#305;ndan yaz&#305;ld&#305;.</div>' +
                                 '</div>' +
                             '</div>' +
-                            '</div>' +
+                            '</div>' +                            
                             '</div>';
 
-                            setBookmarks(href,index);
+                            setBookmarks(post.href, index);
                         });
                         $('.headItem').css({ 'display': 'block' });
-                        $('.articles').html($listAll);
+                        $('.articles').html(postHTML);
                         document.body.style.height = "100%";
                         console.log("Kodcu.com");
                     }
@@ -138,6 +126,101 @@
             }
             var articles = GetArticles();
 
+            // an article object to specify each post that returns from the rss.
+            var article = function(post,hashtable) {
+
+                this.creator = post.find("creator").text();
+                this.title = post.find("title").text();
+                this.href = post.find("link").text();
+                var description = post.find("description").text();
+                this.image = description.substr(0, description.indexOf('>') + 1);                
+
+                this.getDescription = function () {
+                    return description.substr(description.indexOf('>') + 1);
+                }
+
+                this.getDate = function () {
+                    var datelist = post.find("pubDate").text().substr(4, 12).trim().split(" ");
+                    var month = getMonthAbbreviation(datelist[1]);
+                    return datelist[0] + " " + month + " " + datelist[2];
+                }
+
+                this.getCategories = function () {
+                    var listCategories = "";
+                    var uniqueList = [];
+                    post.find("category").each(function (indexs, item) {
+                        var path = hashtable.getValue($(item).text().trim().toLowerCase());
+                        if (path != undefined) {
+                            if (uniqueList.length == 0 || uniqueList.indexOf(path) == -1) {
+                                uniqueList.push(path);
+                                var name = $(item).text().trim();
+
+                                listCategories += '<a class="catehref" style="margin-right:1px;margin-left:1px;" ' +
+                                            'href=http://www.kodcu.com/icerik/' + path + " " +
+                                            'title="' + name.toLowerCase() + ' kategorisindeki t&#252;m yaz&#305;lar&#305; g&#246;ster" ' +
+                                            'rel="category tag">' + name.toUpperCase() + '</a> // ';
+                            }
+                        }
+                    });
+                    return listCategories.substr(0, listCategories.length - 3);
+                }
+            }
+
+            //an hash table for a few of categories described in Kodcu.com
+            var hashtable = function () {
+
+                var url = new Object();
+                url["yazılım"] = "yazilim";
+                url["yazılar"]  = "yazilar";
+                url["kitap"]    = "kitap-2";
+                url["agile"] = "agile-2";
+                url["java"] = "yazilar/java";
+                url["kanban"] = "kanban";
+                url["eğitim"] = "egitim-2";
+                url["egitim"] = "egitim-2";
+                url["big data"] = "big-data";
+                url["html 5"] = "html-5";
+                url["javascript & ajax"] = "yazilar/javascript-ajax";
+                url["sql"] = "sql-2";
+                url["veritabanlari"] = "yazilar/veritabanlari";
+                url["webinar"] = "webinar";
+                url["python"] = "yazilar/python";
+                url["java güvenlik çatıları"] = "java-guvenlik-catilari";
+                url["apache shiro"] = "java-guvenlik-catilari/apache-shiro-java-guvenlik-catilari";
+                url["güvenlik"] = "guvenlik-2";
+                url["html & css"] = "yazilar/html-css";
+                url["nosql"] = "nosql-2";
+                url["mangodb"] = "nosql-2/mangodb-2";
+                url["mobil"] = "mobil-2";
+                url["verimlilik"] = "verimlilik";
+                url["javaee 7"] = "java-ee-7-2";
+                url["tutorial"] = "tutorial-2";
+                url["game"] = "game";
+                url["mobil"] = "mobil-2";
+                url["ios"] = "yazilar/ios-yazilar";
+                url["grails"] = "grails";
+                url["javaee"] = "javaee-2";
+                url[".net"] = "yazilar/dotnet";
+                url["spring çatısı"] = "spring-catisi";
+                url["sunucu"] = "sunucu";
+                url["girisimcilik"] = "girisimcilik";
+                url["web intelligence"] = "web-intelligence";
+                url["yapay zeka"] = "yapay-zeka";
+                url["java enterprise edition"] = "java-enterprise-edition";
+                url["startup"] = "startup";
+                url["android"] = "yazilar/android-yazilar";
+                url["javaserver faces"] = "javaserver-faces";
+                url["is zekasi"] = "yazilar/is-zekasi";
+                url["php"] = "yazilar/php";
+                url["jpa"] = "jpa-2";
+
+                this.getValue = function(key) {
+                    return url[key];// can return undefined!
+                }
+
+            }
+
+            //initialize the bookmark(s) that include(s) in the other bookmarks folder
             function setBookmarks(href,index) {
                 chrome.bookmarks.search(href, function (bookmarkTreeNodes) {
                     var book = {};
@@ -164,6 +247,8 @@
 
                 });
             }
+
+            //get the turkish month abbreviation
             function getMonthAbbreviation(month) {
                 switch (month) {
                     case "Jan":

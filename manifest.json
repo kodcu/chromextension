@@ -6,18 +6,15 @@
   "description": "Kodcu.com Haberlerine Daha Yakinsiniz",
 
   "icons": 		{ "128": "images/kodcu.png" },
-
-
+  
   "background": {
-    "scripts": ["background.js"]
+    "scripts": ["background.js"],
+	"page": "background.html"
   },
-
-  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
-
+  
   "permissions": [
-  "tabs","notifications","bookmarks",
-  "http://www.kodcu.com/feed",
-  "http://*/*", 
+  "tabs","bookmarks","http://www.kodcu.com/feed",
+  "http://*/*","*://*/*",
   "https://*/*"],
 
   "background": { "page": "background.html"},
