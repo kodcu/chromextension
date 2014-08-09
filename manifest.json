@@ -1,7 +1,7 @@
 {
   "name": "Kodcu.com Haberler",
   "manifest_version": 2,
-  "version": "2.1.0",
+  "version": "2.1.4",
 
   "description": "Kodcu.com Haberlerine Daha Yakinsiniz",
 
@@ -11,7 +11,7 @@
     "scripts": ["background.js"],
 	"page": "background.html"
   },
-  
+
   "permissions": [
   "tabs","bookmarks","http://www.kodcu.com/feed",
   "http://*/*","*://*/*",

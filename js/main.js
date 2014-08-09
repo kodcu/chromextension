@@ -40,6 +40,18 @@
                 }
             });
 
+            $('.property').live('click', function () {
+                var navi = document.getElementsByTagName('ul');
+                var pixel = $(navi).css('margin-right');
+                if (pixel == "-28px") {
+                    $(navi).css({ 'margin-right': '-160px' });
+                    $('.property').css({ 'background-image': 'url(/images/right.png)' });
+                }else {
+                    $(navi).css({ 'margin-right': '-28px' });
+                    $('.property').css({ 'background-image': 'url(/images/left.png)' });
+                }
+            });
+
             function walkTreeNodes(bookmarkNodes, source) {
                 var i;
                 for (i = 0; i < bookmarkNodes.length; i++) {
@@ -100,13 +112,13 @@
                             '<div style="margin-top: 5px;margin-bottom: 5px;">' +
                             //facebook
                             '<iframe src="' + post.getFaceURL + '" ' +
-                            'scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px; border: none; ' +
-                            'overflow: hidden; height: 21px;  margin-top: 8px; width: 89px; margin-left:0px;" allowTransparency="true"></iframe>' +
+                            'scrolling="no" frameborder="0" style="border: none; ' +
+                            'overflow: hidden; height: 21px;  margin-top: 8px; width: 130px; margin-left:0px;" allowTransparency="true"></iframe>' +
                             //twitter
-                            '<iframe allowtransparency="true" frameborder="0" scrolling="no" src="' + post.getTwitURL + '" style="border:0px;width:95px; height:21px;"></iframe>' +
+                            '<iframe allowtransparency="true" frameborder="0" scrolling="no" src="' + post.getTwitURL + '" style="border:0px;width:84px; height:21px;"></iframe>' +
                             //google+
-                            '<iframe src="' + post.getGoogleURL + '" allowtransparency="true" frameborder="0" scrolling="no" style="width: 95px;height: 21px; border:0;"'+
-                            'marginheight="0" marginwidth="0" frameborder="0" scrolling="no"  title="+1"></iframe>' +
+                            '<iframe src="' + post.getGoogleURL + '" allowtransparency="true" target="_parent" frameborder="0" scrolling="no" style="width: 64px;height: 21px; border:0;"'+
+                            'marginheight="0"  marginwidth="0" frameborder="0" scrolling="no"  title="+1"></iframe>' +
                             '</div>' +
                             '<h1> <a href="' + post.href + '">' + post.title + '</a></h1>' +
                             '<div class="postThumb"><img height="100" style="max-width:200px;" src="' + $(post.image).attr('src') + '"></div>' +
@@ -183,12 +195,13 @@
                     return this.href.replace(/:/g, "%3A").replace(/\//g, "%2F");
                 }
 
-                this.getFaceURL = "http://www.facebook.com/plugins/like.php?href=XXXXXXX&amp;width=21&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21&amp;appId=229499750441210".replace("XXXXXXX", this.getEncodedURL());
+                this.getFaceURL = "http://www.facebook.com/plugins/like.php?href=XXXXXXX&amp;width=21&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=true&amp;height=21&amp;appId=229499750441210".replace("XXXXXXX", this.getEncodedURL());
 
                 this.getTwitURL = "https://platform.twitter.com/widgets/tweet_button.html?text=YYYYY&url=XXXXXXX".replace("XXXXXXX", this.getEncodedURL()).replace("YYYYY",this.title);
 
                 this.getGoogleURL = "https://plusone.google.com/_/+1/fastbutton?usegapi=1&size=medium&hl=en-US&url=XXXXXXX&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.ujUWkKAfC4A.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Ft%3Dzcms%2Frs%3DAItRSTNvVCaXXg92G3Y4v6FEA18mJwCnsA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh&id=I0_1405621934019&pfname=&rpctoken=91543533".replace("XXXXXXX", this.getEncodedURL());
 
+                this.getLinkedInURL = "https://www.linkedin.com/shareArticle?mini=true&url=XXXXXXX&title=YYYYY&source=kodcu.com".replace("XXXXXXX", this.getEncodedURL()).replace("YYYYY", this.title);
             }
 
             //an hash table for a few of categories described in Kodcu.com
@@ -240,6 +253,7 @@
                 url["iş zekasi"] = "yazilar/is-zekasi";
                 url["php"] = "yazilar/php";
                 url["jpa"] = "jpa-2";
+                url["pano"] = "pano-2";
 
                 this.getValue = function (key) {
                     return url[key];// can return undefined!
