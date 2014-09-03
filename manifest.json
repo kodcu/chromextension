@@ -1,9 +1,9 @@
-{
+﻿{
   "name": "Kodcu.com Haberler",
   "manifest_version": 2,
-  "version": "2.1.4",
+  "version": "2.1.8",
 
-  "description": "Kodcu.com Haberlerine Daha Yakinsiniz",
+  "description": "Kodcu.com Haberlerine Daha Yakınsınız",
 
   "icons": 		{ "128": "images/kodcu.png" },
   
@@ -24,7 +24,7 @@
   ],
 
   "browser_action": {
-    "default_title": "Kodcu.com |  Teknolojilerin Takipcisi",
+    "default_title": "Kodcu.com | Teknolojilerin Takipçisi",
     "default_icon": "images/kodcu.png",
     "default_popup": "listofarticles.html"
   }

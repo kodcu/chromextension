@@ -73,11 +73,7 @@
             }
 
             function updateIcon() {
-                if (localStorage.isCountChange != undefined &&
-                JSON.parse(localStorage.isCountChange) == false) {
-                    chrome.browserAction.setBadgeText({ text: "" });
-                    localStorage.isCountChange = true;
-                }
+                chrome.browserAction.setBadgeText({ text: "" });
             }
             chrome.browserAction.onClicked.addListener(updateIcon);
             updateIcon();
@@ -86,6 +82,9 @@
             var GetArticles = function () {
 
                 var req = new XMLHttpRequest();
+                var timeout = setTimeout(function () {
+                    req.abort();
+                }, 60000);
                 req.open("GET", "http://www.kodcu.com/feed/", true);
                 req.setRequestHeader("Pragma", "no-cache");
                 req.setRequestHeader("Cache-Control", "no-cache");
@@ -99,10 +98,13 @@
                         var response = req.responseText;
                         var rss = $.parseXML(response);
                         var HashTable = new hashtable();
+                        var ItemList = [];
 
                         $(rss).find("item").each(function (index, item) {
 
                             var post = new article($(item), HashTable);
+                            ItemList[index] = post.title;
+
                             postHTML += '<div class="postBoxMid">' +
                             '<div class="postBoxMidInner first clearfix">' +
                             '<div class="date"><span>' + post.getDate() + '</span></div>' +
@@ -137,6 +139,9 @@
 
                             setBookmarks(post.href, index);
                         });
+                        //serialization
+                        localStorage.setItem('firstAttempt', JSON.stringify(ItemList));
+
                         $('.headItem').css({ 'display': 'block' });
                         $('.articles').html(postHTML);
                         document.body.style.height = "100%";

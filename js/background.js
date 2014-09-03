@@ -1,33 +1,31 @@
 ﻿(function ($) {
     $(document).ready(function () {
         try {
-            var firstItemNames, secondItemNames;            
+            var secondList;
+
             //pick a random number as a timer   
             var random = Math.floor((Math.random() * 2600000) + 1000000);
-
-            if (!localStorage.isInitialized) {
-                localStorage.isActivated = true;
-                localStorage.isCountChange = false;
-            }
-
+            
             function init() {
-                if (JSON.parse(localStorage.isActivated)) { getFirstAttempt(); }
+
+                var localList = localStorage.getItem('firstAttempt');
+                if (localList == null) {
+                    getFirstAttempt();
+                    chrome.browserAction.setBadgeText({text: "10"});
+                }
+                else {
+                    getSecondAttempt();
+                }
 
                 setInterval(function () {
-                    if (JSON.parse(localStorage.isActivated)) {
-                        if (JSON.parse(localStorage.isCountChange)) {
-                            getFirstAttempt();
-                            localStorage.isCountChange = false;
-                        }
-                        getSecondAttempt();
-                    }
+                    getSecondAttempt();
                 }, random);
             }
+
             init();
 
             function getFirstAttempt() {
-                firstItemNames = [];
-
+                var firstItemNames = [];
                 var req = HttpRequest();
                 req.onload = listof;
                 req.send(null);
@@ -38,12 +36,13 @@
                         $(rss).find("item").each(function (index, item) {
                             firstItemNames[index] = $(item).find("title").text();
                         });
+                        localStorage.setItem('firstAttempt', JSON.stringify(firstItemNames));
                     }
                 }
             }
 
             function getSecondAttempt() {
-                secondItemNames = [];
+                secondList = [];
 
                 var req = HttpRequest();
                 req.onload = listof;
@@ -53,39 +52,49 @@
                     if (req.readyState == 4 && req.status == 200) {
                         var rss = $.parseXML(req.responseText);
                         $(rss).find("item").each(function (index, item) {
-                            secondItemNames[index] = $(item).find("title").text();
+                            secondList[index] = $(item).find("title").text();
                         });
+
                         controlItems();
                     }
                 }
             }
 
+            //check the previous news and the updated news, if exist then show the number of how many new articles reveal 
             function controlItems() {
                 var count = 0;
-                if (JSON.parse(localStorage.isCountChange) == false &&
-                firstItemNames.length == secondItemNames.length) {
+                var list = localStorage.getItem('firstAttempt'); // doing first deserialization to the local object
+                var firstItemNames = JSON.parse(list);
 
-                    for (var i = 0; i < secondItemNames.length; i++) {
+                if (firstItemNames != null &&
+                    firstItemNames.length == secondList.length) {
+                    for (var i = 0; i < secondList.length; i++) {
                         for (var y = 0; y < firstItemNames.length; y++) {
-                            if (secondItemNames[i] == firstItemNames[y]) {
+                            if (secondList[i] == firstItemNames[y]) {
                                 count++;
                                 break;
                             }
                         }
                     }
-
                     //inform users for the new post(s)
-                    if (count != secondItemNames.length) {
-                        var result = secondItemNames.length - count;
+                    if (count != secondList.length) {
+                        result = secondList.length - count;
                         chrome.browserAction.setBadgeText({
                             text: result.toString()
                         });
                     }
+                }                
+                else {
+                    localStorage.setItem('firstAttempt', JSON.stringify(secondList));
                 }
             }
 
+            //a simple http-Request to obtain the current feed 
             function HttpRequest() {
                 var req = new XMLHttpRequest();
+                var timeout = setTimeout(function () {
+                    req.abort();
+                }, 60000);
                 req.open("GET", "http://www.kodcu.com/feed/", true);
                 req.setRequestHeader("Pragma", "no-cache");
                 req.setRequestHeader("Cache-Control", "no-cache");
