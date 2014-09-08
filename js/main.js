@@ -43,13 +43,32 @@
             $('.property').live('click', function () {
                 var navi = document.getElementsByTagName('ul');
                 var pixel = $(navi).css('margin-right');
-                if (pixel == "-28px") {
+                if (pixel === "-28px") {
                     $(navi).css({ 'margin-right': '-160px' });
                     $('.property').css({ 'background-image': 'url(/images/right.png)' });
                 }else {
                     $(navi).css({ 'margin-right': '-28px' });
                     $('.property').css({ 'background-image': 'url(/images/left.png)' });
                 }
+            });
+
+            $('.read').live('click', function () { 
+                chrome.tabs.create({
+                    'windowId': chrome.windows.WINDOW_ID_CURRENT,
+                    'url': $(this).attr('href'),
+                    'selected': false
+                });
+            });
+
+            $('.base').live('mouseover', function() {
+                    var height = $(this).height();
+                    $(this).find("a").css({ 'height': height + 'px' });
+                    $(this).find("a").css({ 'display': 'block' });
+                    $(this).css({ 'opacity': '0.8'});
+            }).live('mouseout',function () {
+                    $(this).find("a").css({ 'height': '0px' });
+                    $(this).find("a").css({ 'display': 'none' });
+                    $(this).css({ 'opacity': '1', });
             });
 
             function walkTreeNodes(bookmarkNodes, source) {
@@ -122,17 +141,18 @@
                             '<iframe src="' + post.getGoogleURL + '" allowtransparency="true" target="_parent" frameborder="0" scrolling="no" style="width: 64px;height: 21px; border:0;"'+
                             'marginheight="0"  marginwidth="0" frameborder="0" scrolling="no"  title="+1"></iframe>' +
                             '</div>' +
-                            '<h1> <a href="' + post.href + '">' + post.title + '</a></h1>' +
+                            '<div class="base">'+
+                            '<a class="read" href="' + post.href + '"></a>' +
+                            '<h1>' + post.title + '</h1>' +
                             '<div class="postThumb"><img height="100" style="max-width:200px;" src="' + $(post.image).attr('src') + '"></div>' +
                             '<div class="textPreview"><p>' + post.getDescription() + '</p>' +
-                            '</div>' +
+                            '</div>'+
+                            '</div>'+
                             '<div class="postMeta">' +
-                            '<a style="float: left; margin-top: 5px;margin-right: 6px;margin-top: 2px;" href="' + post.href + '" class="more-link">Devam&#305;n&#305; Oku &#187;</a>' +
-                                '<div class="metaRight">' +
-                                    '<img style="float: left; position: relative;;margin-top: -8px;height:28px;" src="/images/male80.png" alt="Yazar">' +
-                                    '<div style="margin-top:2px; margin-right: 0px;">' +
-                                        '<a style="text-decoration:underline;">' + post.creator + '</a> taraf&#305;ndan yaz&#305;ld&#305;.</div>' +
-                                '</div>' +
+                                '<div style="border-radius: 100px;background: url(\'/images/line-light.png\');float: left;height: 36px;width: 36px;padding: 0px;margin: 0px;">'+
+                                  '<img style="display:block;border-radius100px;position:relative;margin-top:2px;height:28px;margin-left: 4px;padding:0px" src="/images/male80.png" alt="Yazar"></div>' +
+                                '<div style="margin-top:8px;">' +
+                                    '<span style="text-decoration:underline;margin-left: 5px;">' + post.creator + '</span> taraf&#305;ndan yaz&#305;ld&#305;.</div>' +                                
                             '</div>' +
                             '</div>' +
                             '</div>';

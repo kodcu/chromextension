@@ -123,12 +123,22 @@ html {
 /* ------------------------------------  */
 .postMeta {
     border-top: 1px solid rgb(226, 226, 226);
-    padding: 10px 0px 0px 0px;
-    margin-top: 10px;
+    padding: 5px 0px 0px 0px;
+    margin-top: 7px;
     clear: left;
     overflow: hidden;
     float: left;
     width: 100%;
+}
+
+.read {
+    background-image: url(/images/pen.png);
+    width: 384px;
+    height: 0px;
+    position: absolute;
+    background-position:center;
+    background-repeat:no-repeat;
+    display:none;
 }
 
 .postMeta a {
@@ -152,7 +162,7 @@ html {
 
 .postThumb {
     float: left;
-    margin: 4px 10px 0px 2px;
+    margin: 4px 10px 0px 0px;
 }
 
 h1 {
@@ -163,16 +173,6 @@ h1 {
     line-height: 100%;
     font-family: Arial,Helvetica,sans-serif;
     font-style: normal;
-}
-
-h1 a:hover {
-    color: rgb(31, 162, 225);
-    text-decoration: none;
-}
-
-h1 a {
-    color: black;
-    text-decoration: none;
 }
 
 .category {
