@@ -131,6 +131,43 @@ html {
     width: 100%;
 }
 
+.tags {
+    float: left;
+    width: 299px;
+    margin-top: 0px;
+    margin-right: 0px;
+}
+
+.tags  li {
+    display: inline-table;
+    margin: 0px 0px 3px 0px;    
+}
+
+.tags  li a {
+    height:100%;
+    width:100%;
+    cursor: pointer;
+    display:block;
+}
+
+.lIn {
+    background-image:url(/images/linked.png);
+    background-repeat:no-repeat;
+    width: 69px;
+    height: 19px;
+    position: absolute;    
+    background-size: 66px;
+    float: left;
+    margin-top: 8px;
+    background-color: rgba(252, 252, 252, 0.81);
+    background-position-x: 2px;
+    background-position-y: 1px;
+    border-color: rgba(160, 158, 158, 0.55);
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 1px;
+}
+
 .read {
     background-image: url(/images/pen.png);
     width: 384px;
