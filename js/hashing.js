@@ -48,6 +48,9 @@ var hashtable = function () {
     url["php"] = "yazilar/php";
     url["jpa"] = "jpa-2";
     url["pano"] = "pano-2";
+    url["aop"] = "yazilar/java/aop";
+    url["aspectj"] = "yazilar/java/aop/aspectj";
+    url["reblog"] = "reblog";
 
     this.getValue = function (key) {
         return url[key];// can return undefined!

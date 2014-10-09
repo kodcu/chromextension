@@ -134,7 +134,7 @@ html {
 .tags {
     float: left;
     width: 299px;
-    margin-top: 0px;
+    margin-top: 1px;
     margin-right: 0px;
 }
 
@@ -229,7 +229,7 @@ h1 {
     width: 12px;
     height: 12px;
     float: left;
-    margin-top: -1px;
+    margin-top: 0px;
 }
 
 .starBookmark:hover {
@@ -307,12 +307,12 @@ h1 {
 
 
 .send {
-    background-image: url(/images/makale.png);
+    background-image: url(/images/makale2.png);
     background-repeat: no-repeat;
 }
 
-.info {
-    background-image: url(/images/info.png);
+.egitim {
+    background-image: url(/images/ua.png);
     background-repeat: no-repeat;
 }
 
@@ -328,7 +328,7 @@ h1 {
 }
 
 .authors {
-    background-image: url(/images/person.png);
+    background-image: url(/images/authors.png);
     background-repeat: no-repeat;
 }
 
