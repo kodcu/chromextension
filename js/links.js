@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
     
-    $('a.more-link,a.catehref,a.pano,a.github,a.linked,a.authors,a.egitim').live('click', function () {
+    $('a.more-link,a.catehref,a.pano,a.github,a.linked,a.authors,a.egitim,a.send').live('click', function () {
         chrome.tabs.create({
             'windowId': chrome.windows.WINDOW_ID_CURRENT,
             'url': $(this).attr('href'),
