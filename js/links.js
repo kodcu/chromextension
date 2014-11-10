@@ -8,6 +8,10 @@
         });
     });
 
+    $('.tags li a').live('mouseover', function () {
+        $(this).css({ 'font-weight': 'bold' });
+    }).live('mouseout', function () { $(this).css({ 'font-weight': 'normal' }) });
+
     $('.property').live('click', function () {
         var navi = $('.autonavi ul');
         var pixel = $(navi).css('margin-right');

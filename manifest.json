@@ -1,32 +1,25 @@
 ﻿{
   "name": "Kodcu.com Haberler",
   "manifest_version": 2,
-  "version": "2.2.4",
+  "version": "2.2.6",
 
   "description": "Kodcu.com Haberlerine Daha Yakınsınız",
-
-  "icons": 		{ "128": "images/kodcu.png" },
-  
-  "background": {
-    "scripts": ["background.js"],
-	"page": "background.html"
+  "icons": 		{ 
+	"128": "images/d_icon.png" 
   },
-
+  
   "permissions": [
   "tabs","bookmarks","http://www.kodcu.com/feed",
   "http://*/*","*://*/*",
   "https://*/*"],
 
+  "background": { "scripts": ["background.js"] },
   "background": { "page": "background.html"},
 
-  "web_accessible_resources": [
-     "images/information.png"
-  ],
-
   "browser_action": {
-    "default_title": "Kodcu.com | Teknolojilerin Takipçisi",
-    "default_icon": "images/kodcu.png",
+    "default_title": "Kodcu.com | Değer Katan Bilgiler",
+    "default_icon": "images/icons.png",
     "default_popup": "listofarticles.html"
-  }
-  
+  },
+  "omnibox": { "keyword" : "kodcu" }
 }

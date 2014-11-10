@@ -26,8 +26,8 @@ body {
     line-height: 1;
     width: 400px;
     height: 355px;
-    color: rgb(51, 51, 51);
-    font-family: 'Lato', serif;
+    color: rgba(51, 51, 51,1);
+    font-family: 'Source', sans-serif;
     font-size: 15px;
     line-height: 135%;
     overflow: auto;
@@ -115,11 +115,6 @@ table {
     zoom: 1;
 }
 
-html {
-    background-image: url(/images/load.gif);
-    background-position: center center;
-    background-repeat: no-repeat;
-}
 /* ------------------------------------  */
 .postMeta {
     border-top: 1px solid rgb(226, 226, 226);
@@ -133,7 +128,7 @@ html {
 
 .tags {
     float: left;
-    width: 299px;
+    width: 290px;
     margin-top: 1px;
     margin-right: 0px;
 }
@@ -198,11 +193,6 @@ html {
     padding: 0;
 }
 
-.postThumb {
-    float: left;
-    margin: 4px 10px 0px 0px;
-}
-
 h1 {
     font-size: 17px;
     font-weight: bolder;
@@ -215,7 +205,7 @@ h1 {
     font-size: 12px;
     line-height: 100%;
     color: rgb(204, 204, 204);
-    font-weight: bold;
+    /*font-weight: bold;*/
     margin-top:1px;
 }
 
@@ -237,9 +227,7 @@ h1 {
 
 .postBoxMid {
     padding: 0;
-    background: url(/images/bk_box_mid.png) 0 0 repeat-y;
-    border-color: rgba(0, 0, 0, 0.19);
-    /*border-radius: 5px;*/
+    border-color: rgba(0, 0, 0, 0.18);
     border-width: 1px;
     border-style: solid;
     margin-top: 1px;
@@ -253,10 +241,6 @@ h1 {
     position: relative;
 }
 
-.first {
-    background: url(/images/bk_box_mid_inner.jpg) 0 0 no-repeat;
-}
-
 .date {
     float: right;
     text-transform: uppercase;
@@ -268,8 +252,11 @@ h1 {
 
 .articles {
     z-index: 1;
-    height: 100%;
     margin-top: 51px;
+}
+
+div#loader {
+    position:initial;
 }
 
 .headItem {
@@ -281,8 +268,8 @@ h1 {
     z-index: 1111;
     width: 394px;
     margin-left: 0.5px;
-    background-color: rgba(247, 247, 247, 0.84);
-    border-color: rgba(0, 0, 0, 0.1);
+    background-color: white;
+    border-color: rgba(0, 0, 0, 0.18);
     /*border-radius: 2px;*/
     border-width: 1px;
     border-style: solid;
@@ -323,7 +310,6 @@ h1 {
 .github {
     background-image: url(/images/github.png);
     background-repeat: no-repeat;
-
 }
 
 .authors {
@@ -335,11 +321,11 @@ h1 {
     background-image: url(/images/kodcu-logo.gif); 
     width: 191px; 
     background-repeat: no-repeat; 
-    background-size: 194px; 
-    background-origin: content-box; 
-    height: 41px; 
-    position: absolute; 
-    margin-top: 2px;
+    background-size: 185px;
+    height: 34px;
+    position: absolute;
+    margin-top: 8px;
+    margin-left: 5px;
 }
 
 ul li {
