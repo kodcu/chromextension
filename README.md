@@ -6,13 +6,12 @@ Chrome Web Store Bağlantısı: [Uygulama](https://chrome.google.com/webstore/de
 ### Ekran Görüntüleri
 ---
 
-<img src="https://dl.dropboxusercontent.com/u/15056258/extension/1.png" width="700px" height="100%" style="max-width:100%;margin-left: -13px;" ></img>
+<img src="https://dl.dropboxusercontent.com/u/15056258/extension/tab2.png"  ></img>
 <br>
-<img src="https://dl.dropboxusercontent.com/u/15056258/extension/2.png" width="700px" height="100%" ></img>
+<img src="https://dl.dropboxusercontent.com/u/15056258/extension/tab3.png"  ></img>
 <br>
-<img src="https://dl.dropboxusercontent.com/u/15056258/extension/4.png" width="700px" height="100%" style="max-width:100%;margin-left: -32px;" ></img>
-<br>
-<img src="https://dl.dropboxusercontent.com/u/15056258/extension/3.png" width="700px" height="100%" style="max-width:100%;margin-left: -33px;" ></img>
+<img src="https://dl.dropboxusercontent.com/u/15056258/extension/tab.png" ></img>
+
 ### Etiketler
 ---
 Versiyonlara göre eklentiyi indirip inceleyebilirsiniz.
