@@ -1,4 +1,4 @@
-<img src="https://dl.dropboxusercontent.com/s/ysp9z642iu37yoq/kodcuEx.png?dl=0" width="100px" height="100%" ></img>
+<img src="https://dl.dropboxusercontent.com/u/15056258/extension/kodcu-logo.gif" width="300px"  ></img>
 ### Kodcu.com'un Chrome Eklentisi
 ---
 Chrome Web Store Bağlantısı: [Uygulama](https://chrome.google.com/webstore/detail/kodcucom-haberler/cafepeokdfpkikdflnifmopdpcmbojon)
@@ -6,14 +6,17 @@ Chrome Web Store Bağlantısı: [Uygulama](https://chrome.google.com/webstore/de
 ### Ekran Görüntüleri
 ---
 
-<img src="https://dl.dropboxusercontent.com/s/yzjfp4gkj9k695w/sc1.JPG" width="600px" height="100%" ></img>
+<img src="https://dl.dropboxusercontent.com/u/15056258/extension/1.png" width="700px" height="100%" ></img>
 <br>
-<img src="https://dl.dropboxusercontent.com/s/51vugepygu7t5pg/sc2.JPG" width="600px" height="100%" ></img>
+<img src="https://dl.dropboxusercontent.com/u/15056258/extension/2.png" width="700px" height="100%" ></img>
 <br>
-<img src="https://dl.dropboxusercontent.com/s/cs5kyplv26c8vo8/sc4.JPG" width="600px" height="100%" ></img>
+<img src="https://dl.dropboxusercontent.com/u/15056258/extension/4.png" width="700px" height="100%" ></img>
+<br>
+<img src="https://dl.dropboxusercontent.com/u/15056258/extension/3.png" width="700px" height="100%" ></img>
 ### Etiketler
 ---
 Versiyonlara göre eklentiyi indirip inceleyebilirsiniz.
+- [2.2.6](https://github.com/kodcu/chromextension/archive/v2.2.6.zip)
 - [2.2.4](https://github.com/kodcu/chromextension/archive/v2.2.4.zip)
 - [2.2.3](https://github.com/kodcu/chromextension/archive/v2.2.3.zip)
 - [2.2.2](https://github.com/kodcu/chromextension/archive/v2.2.2.zip)
