@@ -10,11 +10,12 @@ Chrome Web Store Bağlantısı: [Uygulama](https://chrome.google.com/webstore/de
 <br>
 <img src="https://dl.dropboxusercontent.com/u/15056258/extension/tab3.png"  ></img>
 <br>
-<img src="https://dl.dropboxusercontent.com/u/15056258/extension/tab.png" ></img>
+<img src="https://dl.dropboxusercontent.com/u/15056258/extension/Untitled-2.gif" ></img>
 
 ### Etiketler
 ---
 Versiyonlara göre eklentiyi indirip inceleyebilirsiniz.
+- [2.2.7](https://github.com/kodcu/chromextension/archive/v2.2.7.zip) 
 - [2.2.6](https://github.com/kodcu/chromextension/archive/v2.2.6.zip)
 - [2.2.4](https://github.com/kodcu/chromextension/archive/v2.2.4.zip)
 - [2.2.3](https://github.com/kodcu/chromextension/archive/v2.2.3.zip)
