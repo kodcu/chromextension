@@ -76,7 +76,7 @@ function controlItems() {
         //inform users for the new post(s)
         if (count != secondList.length) {
             result = secondList.length - count;
-            chrome.browserAction.setIcon({ path: "images/icons-r.png" });
+            chrome.browserAction.setIcon({ path: "images/icon-r.png" });
             chrome.browserAction.setBadgeText({ text: result.toString() });
         }
     }

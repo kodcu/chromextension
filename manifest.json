@@ -1,7 +1,7 @@
 ﻿{
   "name": "Kodcu.com Haberler",
   "manifest_version": 2,
-  "version": "2.2.6",
+  "version": "2.2.7",
 
   "description": "Kodcu.com Haberlerine Daha Yakınsınız",
   "icons": 		{ 
@@ -18,7 +18,7 @@
 
   "browser_action": {
     "default_title": "Kodcu.com | Değer Katan Bilgiler",
-    "default_icon": "images/icons.png",
+    "default_icon": "images/icon.png",
     "default_popup": "listofarticles.html"
   },
   "omnibox": { "keyword" : "kodcu" }

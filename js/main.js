@@ -5,7 +5,7 @@
 });
 
 function updateIcon() {
-    chrome.browserAction.setIcon({ path: "images/icons.png" });
+    chrome.browserAction.setIcon({ path: "images/icon.png" });
     chrome.browserAction.setBadgeText({ text: "" });
 }
 
@@ -45,7 +45,7 @@ var GetArticles = function () {
                     '<div class="category"> ' +
                     '<div class="starBookmark" source="' + post.href + '" booktitle="' + post.title + '" access="" title="" index="' + index + '"></div>' +
                     '<div style="margin-left: 15px;"><ul class="tags">' + post.getCategories() + '</ul></div></div>' +
-                    '<div style="margin-top: 5px;margin-bottom: 5px;">' +
+                    '<div style="margin-bottom: 5px;">' +
                     //facebook
                     '<iframe src="' + post.getFaceURL + '" ' +
                     'scrolling="no" frameborder="0" style="border: none; ' +

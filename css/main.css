@@ -166,6 +166,7 @@ table {
 
 .read {
     background-image: url(/images/pen.png);
+    background-color: rgba(255, 255, 255, 0.5);
     width: 384px;
     height: 0px;
     position: absolute;
