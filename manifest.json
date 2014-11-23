@@ -1,7 +1,7 @@
 ﻿{
   "name": "Kodcu.com Haberler",
   "manifest_version": 2,
-  "version": "2.2.7",
+  "version": "2.2.8",
 
   "description": "Kodcu.com Haberlerine Daha Yakınsınız",
   "icons": 		{ 
@@ -9,9 +9,7 @@
   },
   
   "permissions": [
-  "tabs","bookmarks","http://www.kodcu.com/feed",
-  "http://*/*","*://*/*",
-  "https://*/*"],
+  "tabs","bookmarks","*://*/*"],
 
   "background": { "scripts": ["background.js"] },
   "background": { "page": "background.html"},
