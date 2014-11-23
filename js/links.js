@@ -1,16 +1,12 @@
 ﻿$(document).ready(function () {
     
-    $('a.more-link,a.catehref,a.pano,a.github,a.linked,a.authors,a.egitim,a.send').live('click', function () {
+    $('a.more-link,a.catehref,a.pano,a.github,a.linked,a.authors,a.egitim,a.send,a.author-url').live('click', function () {
         chrome.tabs.create({
             'windowId': chrome.windows.WINDOW_ID_CURRENT,
             'url': $(this).attr('href'),
-            'selected': true
+            'selected': false
         });
     });
-
-    $('.tags li a').live('mouseover', function () {
-        $(this).css({ 'font-weight': 'bold' });
-    }).live('mouseout', function () { $(this).css({ 'font-weight': 'normal' }) });
 
     $('.property').live('click', function () {
         var navi = $('.autonavi ul');
@@ -36,10 +32,8 @@
         var height = $(this).height();
         $(this).find("a").css({ 'height': height + 'px' });
         $(this).find("a").css({ 'display': 'block' });
-        $(this).css({ 'opacity': '0.8' });
     }).live('mouseout', function () {
         $(this).find("a").css({ 'height': '0px' });
         $(this).find("a").css({ 'display': 'none' });
-        $(this).css({ 'opacity': '1', });
     });
 });

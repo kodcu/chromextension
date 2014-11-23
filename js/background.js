@@ -29,9 +29,9 @@ function getFirstAttempt() {
 
     function listof() {
         if (req.readyState == 4 && req.status == 200) {
-            var rss = $.parseXML(req.responseText);
-            $(rss).find("item").each(function (index, item) {
-                firstItemNames[index] = $(item).find("title").text();
+            var data = $.parseJSON(req.responseText);
+            $.each(data, function (index, item) {
+                firstItemNames[index] = item.post_title;
             });
             localStorage.setItem('firstAttempt', JSON.stringify(firstItemNames));
         }
@@ -40,16 +40,15 @@ function getFirstAttempt() {
 
 function getSecondAttempt() {
     secondList = [];
-
     var req = HttpRequest();
     req.onload = listof;
     req.send(null);
 
     function listof() {
         if (req.readyState == 4 && req.status == 200) {
-            var rss = $.parseXML(req.responseText);
-            $(rss).find("item").each(function (index, item) {
-                secondList[index] = $(item).find("title").text();
+            var data = $.parseJSON(req.responseText);
+            $.each(data, function (index, item) {
+                secondList[index] = item.post_title;
             });
 
             controlItems();
@@ -60,8 +59,9 @@ function getSecondAttempt() {
 //check the previous news and the updated news, if exist then show the number of how many new articles reveal 
 function controlItems() {
     var count = 0;
-    var list = localStorage.getItem('firstAttempt'); // doing first deserialization to the local object
-    var firstItemNames = JSON.parse(list);
+    // doing first deserialization to the local object
+    var list = localStorage.getItem('firstAttempt'); 
+    var firstItemNames = $.parseJSON(list);
 
     if (firstItemNames != null &&
         firstItemNames.length == secondList.length) {
@@ -91,7 +91,8 @@ function HttpRequest() {
     var timeout = setTimeout(function () {
         req.abort();
     }, 60000);
-    req.open("GET", "http://www.kodcu.com/feed/", true);
+    req.open("GET", "http://pano.kodcu.com/chrome/posts", true);
+    req.setRequestHeader("Content-Type", "application/json");
     req.setRequestHeader("Pragma", "no-cache");
     req.setRequestHeader("Cache-Control", "no-cache");
     return req;
