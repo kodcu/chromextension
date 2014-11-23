@@ -15,6 +15,8 @@ Chrome Web Store Bağlantısı: [Uygulama](https://chrome.google.com/webstore/de
 ### Etiketler
 ---
 Versiyonlara göre eklentiyi indirip inceleyebilirsiniz.
+- [2.2.9](https://github.com/kodcu/chromextension/archive/v2.2.9.zip) 
+- [2.2.8](https://github.com/kodcu/chromextension/archive/v2.2.8.zip) 
 - [2.2.7](https://github.com/kodcu/chromextension/archive/v2.2.7.zip) 
 - [2.2.6](https://github.com/kodcu/chromextension/archive/v2.2.6.zip)
 - [2.2.4](https://github.com/kodcu/chromextension/archive/v2.2.4.zip)
