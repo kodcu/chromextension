@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
     
-    $('a.more-link,a.catehref,a.pano,a.github,a.linked,a.authors,a.egitim,a.send,a.author-url').live('click', function () {
+    $('a.more-link,a.catehref,a.pano,a.github,a.linked,a.authors,a.egitim,a.send,a.author-url,.read').live('click', function () {
         chrome.tabs.create({
             'windowId': chrome.windows.WINDOW_ID_CURRENT,
             'url': $(this).attr('href'),
@@ -18,14 +18,6 @@
             $(navi).css({ 'margin-right': '-28px' });
             $('.property').css({ 'background-image': 'url(/images/left.png)' });
         }
-    });
-
-    $('.read').live('click', function () {
-        chrome.tabs.create({
-            'windowId': chrome.windows.WINDOW_ID_CURRENT,
-            'url': $(this).attr('href'),
-            'selected': false
-        });
     });
 
     $('.base').live('mouseover', function () {

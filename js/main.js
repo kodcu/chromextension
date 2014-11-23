@@ -2,7 +2,7 @@
     chrome.browserAction.onClicked.addListener(updateIcon);
     updateIcon();
     var timeout = setTimeout(function () {
-        var articles = GetArticles();
+        getArticles();
     }, 1000);
     timeout = null;
 });
@@ -15,8 +15,7 @@ function updateIcon() {
 }
 
 //get the list of articles consisting of HTML elements
-var GetArticles = function () {
-
+function getArticles() {
     req = new XMLHttpRequest();
     var timeout = setTimeout(function () {
         req.abort();
@@ -36,14 +35,14 @@ function listof() {
 
         var data = $.parseJSON(req.responseText);
         var hash = new hashtable();
-        var ItemList = [];
+        var freshList = [];
         var loader = document.getElementById('loader');
         $(loader).css({ 'display': 'none' });
 
         $.each(data, function (index, item) {
 
             var post = new article(item, hash);
-            ItemList[index] = post.title;
+            freshList[index] = post.title;
 
             postHTML +=
             '<div class="postBoxMid">' +
@@ -53,7 +52,7 @@ function listof() {
             '<div class="category"> ' +
             '<div class="starBookmark" source="' + post.href + '" booktitle="' + post.title + '" access="" title="" index="' + index + '"></div>' +
             '<div style="margin-left: 15px;"><ul class="tags">' + post.getCategories() + '</ul></div></div>' +
-            '<div style="margin-bottom: 5px;">' +
+            '<div class="social-network" style="margin-bottom: 5px;">' +
             //facebook
             '<iframe src="' + post.getFaceURL + '" ' +
             'scrolling="no" frameborder="0" style="border: none; ' +
@@ -82,7 +81,7 @@ function listof() {
             setBookmarks(post.href, index);
         });
         //serialization
-        localStorage.setItem('firstAttempt', JSON.stringify(ItemList));
+        localStorage.setItem('POST_TITLES', JSON.stringify(freshList));
         $('.headItem').css({ 'display': 'block' });
         $('.articles').html(postHTML);
         document.body.style.height = "100%";

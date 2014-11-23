@@ -1,4 +1,4 @@
-﻿var secondList;
+﻿var freshList;
 var random;
 
 $(document).ready(function () {
@@ -8,85 +8,75 @@ $(document).ready(function () {
 });
 
 function init() {
-    var localList = localStorage.getItem('firstAttempt');
-    if (localList == null) {
-        getFirstAttempt();
-        chrome.browserAction.setBadgeText({ text: "10" });
+    var localList = localStorage.getItem('POST_TITLES');
+    if (!localList) {
+        checkNewPosts(true);
+        updateIcon(10);
     }
     else {
-        getSecondAttempt();
+        checkNewPosts(false);
     }
     setInterval(function () {
-        getSecondAttempt();
+        checkNewPosts(false);
     }, random);
 }
 
-function getFirstAttempt() {
-    var firstItemNames = [];
-    var req = HttpRequest();
+function checkNewPosts(isListEmpty) {
+    var req = httpRequest();
     req.onload = listof;
-    req.send(null);
+    req.send();
 
     function listof() {
         if (req.readyState == 4 && req.status == 200) {
             var data = $.parseJSON(req.responseText);
-            $.each(data, function (index, item) {
-                firstItemNames[index] = item.post_title;
-            });
-            localStorage.setItem('firstAttempt', JSON.stringify(firstItemNames));
-        }
-    }
-}
 
-function getSecondAttempt() {
-    secondList = [];
-    var req = HttpRequest();
-    req.onload = listof;
-    req.send(null);
-
-    function listof() {
-        if (req.readyState == 4 && req.status == 200) {
-            var data = $.parseJSON(req.responseText);
-            $.each(data, function (index, item) {
-                secondList[index] = item.post_title;
-            });
-
-            controlItems();
+            if (isListEmpty) {
+                var names = [];
+                $.each(data, function (index, item) {
+                    names[index] = item.post_title;
+                });
+                localStorage.setItem('POST_TITLES', JSON.stringify(names));
+            }
+            else {
+                freshList = [];
+                $.each(data, function (index, item) {
+                    freshList[index] = item.post_title;
+                });
+                matchItems();
+            }
         }
     }
 }
 
 //check the previous news and the updated news, if exist then show the number of how many new articles reveal 
-function controlItems() {
+function matchItems() {
     var count = 0;
     // doing first deserialization to the local object
-    var list = localStorage.getItem('firstAttempt'); 
-    var firstItemNames = $.parseJSON(list);
+    var list = localStorage.getItem('POST_TITLES');
+    var localList = $.parseJSON(list);
 
-    if (firstItemNames != null &&
-        firstItemNames.length == secondList.length) {
-        for (var i = 0; i < secondList.length; i++) {
-            for (var y = 0; y < firstItemNames.length; y++) {
-                if (secondList[i] == firstItemNames[y]) {
+    if (list && localList.length == freshList.length) {
+        freshList.forEach(function (freshItem) {
+            localList.forEach(function (localItem) {
+                if (freshItem == localItem) {
                     count++;
-                    break;
                 }
-            }
-        }
+            });
+        });
         //inform users for the new post(s)
-        if (count != secondList.length) {
-            result = secondList.length - count;
-            chrome.browserAction.setIcon({ path: "images/icon-r.png" });
-            chrome.browserAction.setBadgeText({ text: result.toString() });
+        if (count != freshList.length) {
+            var result = freshList.length - count;
+            updateIcon(result);
         }
     }
     else {
-        localStorage.setItem('firstAttempt', JSON.stringify(secondList));
+        localStorage.setItem('POST_TITLES', JSON.stringify(freshItem));
+        updateIcon(10);
     }
 }
 
 //a simple http-Request to obtain the current feed 
-function HttpRequest() {
+function httpRequest() {
     var req = new XMLHttpRequest();
     var timeout = setTimeout(function () {
         req.abort();
@@ -106,4 +96,9 @@ function navigate(url) {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         chrome.tabs.update(tabs[0].id, { url: url });
     });
+}
+
+function updateIcon(count){
+    chrome.browserAction.setIcon({ path: "images/icon-r.png" });
+    chrome.browserAction.setBadgeText({ text: count.toString() });
 }
