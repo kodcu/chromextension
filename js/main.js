@@ -37,7 +37,7 @@ function listof() {
         var hash = new hashtable();
         var freshList = [];
         var loader = document.getElementById('loader');
-        $(loader).css({ 'display': 'none' });
+        $(loader).toggle();
 
         $.each(data, function (index, item) {
 
@@ -51,17 +51,19 @@ function listof() {
             '<div class="date"><span>' + post.getDate() + '</span></div>' +            
             '<div class="category"> ' +
             '<div class="starBookmark" source="' + post.href + '" booktitle="' + post.title + '" access="" title="" index="' + index + '"></div>' +
-            '<div style="margin-left: 15px;"><ul class="tags">' + post.getCategories() + '</ul></div></div>' +
-            '<div class="social-network" style="margin-bottom: 5px;">' +
+            '<div class="tag-spec"><ul><li><a><span><img src="images/tag.png" style="width:24px;height:15px;" alt="dropdown"></span></a>' +
+            '<ul class="tags">' + post.getCategories() + '</ul>' +
+            '</li></ul></div></div>' +
+            '<div class="social-network" style="margin-top: 2px;">' +
             //facebook
             '<iframe src="' + post.getFaceURL + '" ' +
             'scrolling="no" frameborder="0" style="border: none; ' +
-            'overflow: hidden; height: 21px;  margin-top: 8px; width: 130px; margin-left:0px;" allowTransparency="true"></iframe>' +
+            'overflow: hidden;height: 21px;width: 130px; margin-left:0px;" allowTransparency="true"></iframe>' +
             //twitter
             '<iframe allowtransparency="true" frameborder="0" scrolling="no" src="' + post.getTwitURL + '" style="border:0px;width:84px; height:21px;"></iframe>' +
             //google+
             '<iframe src="' + post.getGoogleURL + '" allowtransparency="true" target="_parent" frameborder="0" scrolling="no" style="width: 64px;height: 21px; border:0;"' +
-            'marginheight="0"  marginwidth="0" frameborder="0" scrolling="no"  title="+1"></iframe>' +
+            'marginheight="0"  marginwidth="0" frameborder="0" scrolling="no" hspace="0" title="+1"></iframe>' +
             //linkedIn
             '<a class="lIn" title="Share" href="' + post.getLinkedInURL + '"></a>' +
             '</div>' +
@@ -82,7 +84,7 @@ function listof() {
         });
         //serialization
         localStorage.setItem('POST_TITLES', JSON.stringify(freshList));
-        $('.headItem').css({ 'display': 'block' });
+        $('.headItem').toggle();
         $('.articles').html(postHTML);
         document.body.style.height = "100%";
         console.log("Kodcu.com");
@@ -124,7 +126,10 @@ var article = function (post, hashtable) {
 
     this.getDescription = function () {
         var content = post.post_content;
-        return content.concat("...");
+        if(content.match(/\.( |\n|\r|\t|(&nbsp;))+$/i))
+            return content;
+        else
+            return content.concat("...");
     }
 
     this.getDate = function () {
@@ -138,13 +143,13 @@ var article = function (post, hashtable) {
             if (path != undefined) {
                 var name = item;
 
-                listCategories += '<li><a class="catehref"' +
+                listCategories += '<li><a style="text-transform:capitalize"' +
                 'href=http://www.kodcu.com/icerik/' + path + " " +
                 'title="' + name.toLowerCase() + ' kategorisindeki t&#252;m yaz&#305;lar&#305; g&#246;ster" ' +
-                'rel="category tag">' + name.toUpperCase() + '</a></li> // ';
+                'rel="category tag">' + name + '</a></li>';
             }
         });
-        return listCategories.substr(0, listCategories.length - 3);
+        return listCategories;
     }
 
     this.getEncodedURL = function () {
@@ -176,7 +181,7 @@ function setBookmarks(href, index) {
             book = {
                 title: "Bu haberi yıldıza tekrar tıklayarak yer iminizden çıkartabilirsiniz",
                 access: "true",
-                cssStyle: "background: url(/images/star.png) 0px 50% no-repeat;",
+                cssStyle: "background:url(/images/bookmark-on.png) -3px 0px / 23px no-repeat;",
                 indexElem: index
             };
         }
@@ -184,7 +189,7 @@ function setBookmarks(href, index) {
             book = {
                 title: "Bu haberi yer iminize ekleyin",
                 access: "false",
-                cssStyle: "background: url(/images/unstar.gif) 0px 50% no-repeat;",
+                cssStyle: "background:url(/images/bookmark-off.png) -3px 0px / 23px no-repeat;",
                 indexElem: index
             };
         }

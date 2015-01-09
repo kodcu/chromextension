@@ -1,4 +1,4 @@
-﻿* {
+* {
     background: transparent;
     border: 0;
     font-size: 100%;
@@ -160,23 +160,72 @@ table {
     border-radius: 100%;
 }
 
-.tags {
-    float: left;
-    width: 255px;/*290px;*/
-    margin-top: 1px;
-    margin-right: 0px;
+.tags:before{
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
 }
 
-.tags  li {
-    display: inline-table;
-    margin: 0px 0px 3px 0px;    
+.tags:before{
+    left: 4px;
+    border-right: 8px solid rgba(136, 223, 43, 0);
+    border-bottom: 8px solid rgba(208, 208, 208, 1);
+    border-left: 8px solid rgba(63, 45, 45, 0.02);
+    margin-top: -8px;
 }
 
-.tags  li a {
-    height:100%;
-    width:100%;
+.tag-spec{
+    margin-left: 20px;
+    width: 24px;
+    height: 100%;
+    padding-bottom: 6px;
+    position: relative;
     cursor: pointer;
+}
+
+.tag-spec ul{
+    width: 0;
+    height: 0;
+    float: none;
+    transform: none;
+}
+
+.tag-spec ul li{
     display:block;
+    margin: 0;
+}
+
+.tag-spec ul li a{
+    width: 24px;
+    height: 15px;
+    position: relative;
+}
+
+.tag-spec ul li ul li:hover{
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.tag-spec ul li ul {
+    display: none;
+    position: absolute;
+    top: 23px;
+    border: 1px solid rgba(0, 0, 0, 0.18);
+    background: white;
+}
+
+.tag-spec ul li ul li{
+    float: none;
+    padding: 3px;
+    margin: 0;
+    height: 100%;
+}
+
+.tag-spec ul li ul li a{
+    display: block;
+    float: none;
+    padding: 5px 0px 0 0px;
+    width: 100%;
     text-decoration: none;
 }
 
@@ -188,7 +237,6 @@ table {
     position: absolute;    
     background-size: 66px;
     float: left;
-    margin-top: 8px;
     background-color: rgba(252, 252, 252, 0.81);
     background-position-x: 2px;
     background-position-y: 1px;
@@ -241,7 +289,6 @@ h1 {
     font-size: 12px;
     line-height: 100%;
     color: rgb(204, 204, 204);
-    /*font-weight: bold;*/
     margin-top:3px;
 }
 
@@ -251,8 +298,8 @@ h1 {
 
 .starBookmark {
     padding: 0;
-    width: 12px;
-    height: 12px;
+    width: 17px;
+    height: 17px;
     float: left;
     margin-top: 0px;
 }
@@ -307,7 +354,6 @@ div#loader {
     margin-left: 0.5px;
     background-color: white;
     border-color: rgba(0, 0, 0, 0.18);
-    /*border-radius: 2px;*/
     border-width: 1px;
     border-style: solid;
     display: none;

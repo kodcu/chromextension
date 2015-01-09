@@ -20,12 +20,18 @@
         }
     });
 
-    $('.base').live('mouseover', function () {
+    $('.base').live('mouseenter', function () {
         var height = $(this).height();
         $(this).find("a").css({ 'height': height + 'px' });
         $(this).find("a").css({ 'display': 'block' });
-    }).live('mouseout', function () {
+    }).live('mouseleave', function () {
         $(this).find("a").css({ 'height': '0px' });
         $(this).find("a").css({ 'display': 'none' });
+    });
+
+    $('.tag-spec').live('mouseenter',function(){
+        $(this).find(".tags").toggle();
+    }).live('mouseleave', function () {
+        $(this).find(".tags").toggle();
     });
 });

@@ -15,7 +15,7 @@
 
             $(this).attr("access", "true");
             $(this).attr("title", "Bu haberi yıldıza tekrar tıklayarak yer iminizden çıkartabilirsiniz");
-            $(this).css({ 'background': 'url(/images/star.png) 0 50% no-repeat' });
+            $(this).css({ 'background': 'url(/images/bookmark-on.png) -3px 0px / 23px no-repeat'});
         }
         else {
             //delete the intended bookmark from (others bookmarks) section
@@ -26,7 +26,7 @@
 
             $(this).attr("access", "false");
             $(this).attr("title", "Bu haberi yer iminize ekleyin");
-            $(this).css({ 'background': 'url(/images/unstar.gif) 0 50% no-repeat' });
+            $(this).css({ 'background': 'url(/images/bookmark-off.png) -3px 0px / 23px no-repeat'});
         }
     });
 
